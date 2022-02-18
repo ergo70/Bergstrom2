@@ -14,7 +14,7 @@ nodes = ['127.0.0.1:8000', '127.0.0.1:8001', '127.0.0.1:8002']
 payload = {"ciphertext": None, "plaintext_hash": None,
            "authentication_tag": None, "pkcs1_oaep_session_key": None, "metadata": {}, "owner_cert": None}
 
-owner_cert = open('c:/Devel/Bergstrom2/oaep_private-key.pem', 'rb').read()
+owner_cert = open('oaep_private-key.pem', 'rb').read()
 public_key = RSA.importKey(owner_cert)
 PKCS1 = PKCS1_OAEP.new(public_key)
 
@@ -57,7 +57,7 @@ def upload():
                 cleartext), 'file_name': filename, 'document_title': document_title}
             payload['owner_cert'] = b64encode(owner_cert).decode('utf8')
             r = post('https://{}/add'.format(nodes[randint(0, len(nodes)-1)]),
-                     json=payload, verify='c:/Devel/Bergstrom2/root.cert')
+                     json=payload, verify='root.cert')
             if r.status_code == 201:
                 flash('Entry created @ {}'.format(r.json().get('chain_hash')))
             else:
