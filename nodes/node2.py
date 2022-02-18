@@ -49,7 +49,7 @@ class ReplState(SyncObjConsumer):
 
 logging.basicConfig(level=logging.INFO)
 
-connect_string = 'host=127.0.0.1 port=5434 user=bergstrom dbname=postgres sslmode=verify-full sslkey=c:/Devel/Bergstrom2/bergstrom.key sslcert=c:/Devel/Bergstrom2/bergstrom.cert sslrootcert=c:/Devel/Bergstrom2/root.cert'
+connect_string = 'host=127.0.0.1 port=5434 user=bergstrom dbname=postgres sslmode=verify-full sslkey=bergstrom.key sslcert=bergstrom.cert sslrootcert=root.cert'
 
 node = FastAPI()
 
