@@ -8,7 +8,7 @@ from Crypto.Cipher import AES
 from contextlib import closing
 from random import randint
 
-connect_string = 'host=127.0.0.1 port=5434 user=bergstrom dbname=postgres sslmode=verify-full sslkey=c:/Devel/Bergstrom2/bergstrom.key sslcert=c:/Devel/Bergstrom2/bergstrom.cert sslrootcert=c:/Devel/Bergstrom2/root.cert'
+connect_string = 'host=127.0.0.1 port=5434 user=bergstrom dbname=postgres sslmode=verify-full sslkey=bergstrom.key sslcert=bergstrom.cert sslrootcert=root.cert'
 
 with closing(pg2.connect(connect_string)) as conn:
     # This'll handle the transaction and closing the cursor
@@ -40,7 +40,7 @@ with closing(pg2.connect(connect_string)) as conn:
         # Bob (Owner)
 
         owner_private_key = RSA.importKey(
-            open('c:/Devel/Bergstrom2/oaep_private-key.pem').read())
+            open('oaep_private-key.pem').read())
 
         PKCS1 = PKCS1_OAEP.new(owner_private_key)
 
