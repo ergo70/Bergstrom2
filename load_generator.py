@@ -18,7 +18,7 @@ payload = {"ciphertext": None, "plaintext_hash": None,
 
 s0 = time()
 
-owner_cert = open('c:/Devel/Bergstrom2/oaep_private-key.pem','rb').read()
+owner_cert = open('oaep_private-key.pem','rb').read()
 public_key = RSA.importKey(owner_cert)
 PKCS1 = PKCS1_OAEP.new(public_key)
 
@@ -41,7 +41,7 @@ for i in range(100):
     # print(payload)
     #s1 = time()
     r = post(
-        'https://{}/add'.format(nodes[randint(0, len(nodes)-1)]), json=payload, verify='c:/Devel/Bergstrom2/root.cert')
+        'https://{}/add'.format(nodes[randint(0, len(nodes)-1)]), json=payload, verify='root.cert')
     print(r.status_code, r.json())
 
 print(time() - s0)
