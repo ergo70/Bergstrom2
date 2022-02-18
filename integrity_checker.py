@@ -9,13 +9,13 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
 from contextlib import closing
 
-connect_string = 'host=127.0.0.1 port=5434 user=bergstrom dbname=postgres sslmode=verify-full sslkey=c:/Devel/Bergstrom2/bergstrom.key sslcert=c:/Devel/Bergstrom2/bergstrom.cert sslrootcert=c:/Devel/Bergstrom2/root.cert'
+connect_string = 'host=127.0.0.1 port=5434 user=bergstrom dbname=postgres sslmode=verify-full sslkey=bergstrom.key sslcert=bergstrom.cert sslrootcert=root.cert'
 
-public_key = ECC.import_key(open('c:/Devel/Bergstrom2/public-key.pem').read())
+public_key = ECC.import_key(open('public-key.pem').read())
 verifier = DSS.new(public_key, 'fips-186-3')
 
 private_key = RSA.importKey(
-    open('c:/Devel/Bergstrom2/oaep_private-key.pem').read())
+    open('oaep_private-key.pem').read())
 PKCS1 = PKCS1_OAEP.new(private_key)
 
 
