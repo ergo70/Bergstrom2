@@ -1,2 +1,2 @@
 # Bergstrom2
-A provisioned blockchain implementation. 100% without unicorn poop. Completely useless, obviously.
+An access-controlled blockchain implementation for small to medium consortiums. 100% without unicorn poop. Completely useless, obviously.
